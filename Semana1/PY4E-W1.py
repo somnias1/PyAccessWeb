@@ -1,0 +1,1 @@
+print("Hands over the keyboard to get good")
