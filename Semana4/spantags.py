@@ -11,7 +11,7 @@ url = input('Enter - ')
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
 
-# Retrieve all of the anchor tags
+# Retrieve all of the span tags
 tags = soup('span')
 
 #How many values and it's sum
