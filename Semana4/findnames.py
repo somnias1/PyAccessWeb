@@ -1,5 +1,7 @@
 
-import urllib.request, urllib.parse, urllib.error
+import urllib.request
+import urllib.parse
+import urllib.error
 from bs4 import BeautifulSoup
 import ssl
 
@@ -8,23 +10,23 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-#Finds values for the first iteration
+# Encuentra los valores para cada posición
 url = input('Enter URL: ')
 Count = int(input('Enter count: '))
-Position = int(input('Enter position: '))-1 #Arrays start at 0, needs the adaptation
+Position = int(input('Enter position: '))-1  # Corrección de vectores
 html = urllib.request.urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, 'html.parser')
 
-# Retrieve all of the anchor tags
+# Busca los tags de enlace
 tags = soup('a')
 
-#Counts anchors followed
+# Recorre la cantidad entregada
 for i in range(Count):
-    #The new url is the one at the Position
+    # El siguiente enlace a seguir está en la posición dada
     urlaux = tags[Position].get('href', None)
-    #Which name is being followed
+    # Qué nombre está siendo seguido
     print('Retrieving: ', tags[Position].contents[0])
     html = urllib.request.urlopen(urlaux).read()
-    soup = BeautifulSoup(html,"html.parser")
-    #Changes the tag list for the next iteration
+    soup = BeautifulSoup(html, "html.parser")
+    # Refresca los tags de enlace encontrados
     tags = soup('a')

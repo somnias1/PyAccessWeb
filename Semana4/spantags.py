@@ -11,22 +11,21 @@ url = input('Enter - ')
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
 
-# Retrieve all of the span tags
+# Extrae los datos que tengan el tag de span
 tags = soup('span')
 
-#How many values and it's sum
-Count=0
-Suma=0
+Count = 0
+Suma = 0
 for tag in tags:
-    # Look at the parts of a tag
+    # Busca los componentes de los tags
     print('TAG:', tag)
     print('Class:', tag.get('class', None))
     print('Contents:', tag.contents[0])
-    #Add a new value found
-    Count+=1
-    #Add it to the acumulative
-    Suma+=int(tag.contents[0])
+    # Suma uno al contador por cada span encontrado
+    Count += 1
+    # Lo suma al acumulado
+    Suma += int(tag.contents[0])
 
-#Print how many values were found and the sum
+# Cuantos tags fueron encontrados y su suma
 print(Count)
 print(Suma)

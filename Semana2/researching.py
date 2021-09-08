@@ -3,11 +3,11 @@ text = open('regex.txt')
 val = 0
 for line in text:
     line = line.rstrip()
-    #Will search for any set of numbers
+    # Busca cualquier set de números
     valist = re.findall('[0-9]+', line)
-    #findall() returns a list, let's change it
+    # findall() Debido a que findall retorna una lista, se va a cambiar
     for item in valist:
-        #Every item in the list is a number, convert it to an int, then add
-        val+=int(item)
+        # Se convierten los valores a entero y se suman
+        val += int(item)
 
 print(val)
